@@ -118,6 +118,16 @@
 
         alert(summary);
     }
+    var a = (Math.random() * 15).toFixed(0); //10
+    function alert(a) {
+        if (a == 15) {
+            document.write(a);
+            return 0;
+        }
+            document.write(a++ + " ");
+        alert(a)
+    }
+    alert(a);
 </script>
 <a href="javascript:void(0);" onclick="task4();">Запустить выполнение задачи №4</a>
 <h3>5.</h3>
@@ -139,7 +149,10 @@
     }
 
     function division(a, b) {
-        return a / b;
+        if (b !== 0) {
+            return a / b;
+        }
+        return 0;
     }
 
     function task5() {
@@ -233,11 +246,22 @@
         var val = +prompt('Введите значение числа'),
             pow = +prompt('Введите значение степени');
 
+        // power(2,3) = 2 * power(2,2) = 2 * 2 * power(2,1) = 2 * 2 * 2
         function power(val, pow) {
-            if (pow === 0)
+
+            if (pow === 0) {
                 return 1;
-            else
-                return val * power(val, pow - 1);
+            }
+            if (pow === 1) {
+                return val
+            }
+            if (pow > 0) {
+                var temp = val * power(val, pow - 1);
+                console.log(temp);
+                return temp;
+            }
+
+            return (1 / val) * (power(val, pow + 1));
         }
 
         alert('Число ' + val + ' в степени ' + pow + ' = ' + power(val, pow));
