@@ -16,6 +16,19 @@
 
             document.getElementById('pasteResult').innerHTML = result;
         }
+
+        function pyramidPrintV2() {
+            var result = '';
+
+            for (var i = 0; i < 20; i++) {
+                result += "x";
+                console.log(result)
+            }
+        }
+
+        function pyramidPrintV3() {
+            for (var i = 1, line = 'x'; i <= 20; console.log(line), i++, line += 'x') ;
+        }
     </script>
 </head>
 <body>
