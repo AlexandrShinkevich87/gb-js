@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function simpleNumbers() {
+            var i = 0,
+                maxNumber = 100,
+                j,
+                simpleNumber,
+                result = '<b>Ответ:</b> ';
+
+            do {
+                j = 1;
+                // делить на 2 это оптимизация
+                while (j <= i / 2) { // проверить, делится ли число i на какое-либо из чисел до него
+                    if (i % j === 0 && j !== 1) {
+                        simpleNumber = false;
+                        break;
+                    } else {
+                        simpleNumber = true;
+                    }
+                    j++;
+                }
+
+                if (simpleNumber) {
+                    result += i + '; ';
+                }
+            } while (++i <= maxNumber);
+
+            document.getElementById('pasteResult').innerHTML = result;
+        }
+    </script>
+</head>
+<body>
+<div id="textTask">
+    <h2>Домашнее задание №3</h2>
+
+    <hr>
+    <h3>Задача 1</h3>
+    <p>
+        С помощью цикла while вывести все простые числа в промежутке от 0 до 100.
+    </p>
+    <p>
+        Простые числа — это целые натуральные (положительные) числа больше единицы, которые имеют ровно 2 натуральных
+        делителя (только 1 и самого себя), т.е. не делится ни на одно другое число, кроме самого себя и единицы. Все
+        остальные числа кроме единицы называются составными. Таким образом, все натуральные числа, за исключением
+        единицы, разбиваются на простые и составные.
+        https://mirurokov.ru/%D0%BC%D0%B0%D1%82%D0%B5%D0%BC%D0%B0%D1%82%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8%D0%B9-%D1%81%D0%BB%D0%BE%D0%B2%D0%B0%D1%80%D1%8C/%D0%BF/%D0%BF%D1%80%D0%BE%D1%81%D1%82%D1%8B%D0%B5-%D1%87%D0%B8%D1%81%D0%BB%D0%B0.html
+    </p>
+    <p>
+        <a href="javascript:void(0);" onclick="simpleNumbers();">Запустить выполнение задачи</a>
+    </p>
+</div>
+
+<div id="pasteResult">
+</div>
+</body>
+</html>

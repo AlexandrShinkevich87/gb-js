@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function pyramidPrint() {
+            var result = '';
+
+            for (var i = 1; i <= 20; i++) {
+                for (var j = 1; j <= i; j++) {
+                    result += "x";
+                }
+                result += '<br>';
+            }
+
+            document.getElementById('pasteResult').innerHTML = result;
+        }
+
+        function pyramidPrintV2() {
+            var result = '';
+
+            for (var i = 0; i < 20; i++) {
+                result += "x";
+                console.log(result)
+            }
+        }
+
+        function pyramidPrintV3() {
+            for (var i = 1, line = 'x'; i <= 20; console.log(line), i++, line += 'x') ;
+        }
+    </script>
+</head>
+<body>
+<div id="textTask">
+    <h2>Домашнее задание №3</h2>
+
+    <hr>
+    <h3>Задача 5</h3>
+    <p>
+        Нарисовать пирамиду с помощью console.log, как показано на рисунке, только у вашей пирамиды должно быть 20
+        рядов, а не 5:
+        <br>x
+        <br>xx
+        <br>xxx
+        <br>xxxx
+        <br>xxxxx
+    </p>
+    <p>
+        <a href="javascript:void(0);" onclick="pyramidPrint();">Запустить выполнение задачи</a>
+    </p>
+</div>
+
+<div id="pasteResult">
+</div>
+</body>
+</html>
