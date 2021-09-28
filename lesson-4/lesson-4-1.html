@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--    <link rel="stylesheet" href="style.css">-->
+</head>
+<body>
+
+<script>
+    var numberObject = {};
+
+    function numberToObject() {
+        numberObject['сотни'] = 0;
+        numberObject['десятки'] = 0;
+        var k = document.getElementById('inputNumber').value,
+            i = +k,
+            j = k.split('').reverse(),
+            l = j.length;
+
+        if (isNaN(k) || i > 999 || i < 0) {
+            console.log('Введенное число не соответствует условию. Повторите ввод.');
+        } else {
+            if (l > 2)
+                numberObject['сотни'] = +j[2];
+            if (l > 1 && (j[0] !== j[1]))
+                numberObject['десятки'] = +j[1];
+            numberObject['единицы'] = +j[0];
+            console.log(numberObject);
+        }
+    }
+
+</script>
+
+<div id="textTask">
+    <h2>Домашнее задание №4</h2>
+
+    <hr>
+    <h3>Задача 1</h3>
+    <p>
+        Написать функцию, преобразующую число в объект. Передавая на вход число от 0 до 999, мы должны получить на
+        выходе объект, в котором в соответствующих свойствах описаны единицы, десятки и сотни. Например, для числа 245
+        мы должны получить следующий объект: {‘единицы’: 5, ‘десятки’: 4, ‘сотни’: 2}. Если число превышает 999,
+        необходимо выдать соответствующее сообщение с помощью console.log и вернуть пустой объект.
+    </p>
+
+    <hr>
+
+    <form action="" id="form" onsubmit="return false;">
+        Введите число от 0 до 999: <input type="text" placeholder="" id="inputNumber">
+        <button onclick="numberToObject();">Преобразовать в объект</button>
+        (смотрим консоль)
+    </form>
+
+
+</div>
+
+<script>
+
+    let splitNumber = {
+        units: 0,
+        tens: 0,
+        hundreds: 0,
+
+        getObject(number) {
+            if (number.length === 0) {
+                console.log("Вы ввели пустую строку");
+            } else if (isNaN(number)) {
+                console.log("Введёное значение не является числом");
+            } else if (!Number.isInteger(+number)) {
+                console.log("Введёное число дробное");
+            } else if ((+number < 0) || (+number > 999)) {
+                console.log("Введёное число выходит за допустимые пределы");
+            } else {
+                number = +number;
+                this.units = number % 100 % 10;
+                this.tens = (number - this.units) / 10 % 10;
+                this.hundreds = Math.floor(number / 100);
+                return this;
+            }
+            return {};
+        },
+
+        isEmpty(obj) {
+            return Object.keys(obj).length === 0;
+        },
+    }
+
+    let myObject = splitNumber.getObject(prompt('Введите целое число от 0 до 999'));
+    if (!splitNumber.isEmpty(myObject)) {
+        console.log(`Сотни: ${myObject.hundreds}, десятки: ${myObject.tens}, единицы: ${myObject.units}.`);
+    }
+</script>
+</body>
+</html>
